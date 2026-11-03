@@ -1,4 +1,4 @@
-//=== Types ===//
+//*=== Types ===*//
 let myName: string = 'Mahadi';
 let myAge: number = 34;
 let perfect: boolean = true;
@@ -11,14 +11,14 @@ const addFunc = (a: number, b: number): number => {
 
 console.log(addFunc(2, 4));
 
-//=== Array ===//
+//*=== Array ===*//
 const arr: number[] = [34, 43, 34];
 const studentNames: string[] = ['Mahadi', 'Milon', 'Hasan'];
 const rolls: number[] = [3, 34, 5, 3];
 
 // studentNames.push('Maha', 43); // Argument of type 'number' is not assignable to parameter of type 'string'.
 
-//=== Tuple ===//
+//*=== Tuple ===*//
 let data: [string, number] = ['Maha', 30];
 
 // Regular tuple: TS allows push() method, modifying the tuple length
@@ -31,7 +31,7 @@ let data2: readonly [string, number] = ['Maha', 30];
 
 console.log(data); // Output: ['Maha', 30, 34]
 
-//=== Optional Parameters ===//
+//*=== Optional Parameters ===*//
 const concatName = (firstName: string, lastName?: string): string => {
   if (!lastName) {
     return firstName;
@@ -41,7 +41,7 @@ const concatName = (firstName: string, lastName?: string): string => {
 
 console.log(concatName('Maha'));
 
-//=== void & default parameters ===//
+//*=== void & default parameters ===*//
 
 // 1. Bad Practice: Default param should not be first
 const myFunc = (greeting: string = 'Hello', name?: string): void => {
@@ -63,7 +63,7 @@ const myFunc3 = (name: string, greeting: string = 'Hello'): void => {
 };
 myFunc3('maha'); // Works! Output: Hello maha
 
-//=== Rest parameters ===//
+//*=== Rest parameters ===*//
 
 const totalOfSum = (...numbers: number[]) => {
   return numbers.reduce((total, sum) => total + sum, 1);
@@ -82,7 +82,7 @@ const loginUser = (
 
 loginUser('Maha', 34, true);
 
-//=== Type & interface ===//
+//*=== Type & interface ===*//
 type User = {
   name: string;
   age: number;
@@ -123,7 +123,7 @@ const user3: IUser = {
   address: ['Dhaka', 'Bangladesh'],
 };
 
-//=== Type alias ===//
+//*=== Type alias ===*//
 
 type Status = 'pending' | 'About';
 type Identity = string | number;

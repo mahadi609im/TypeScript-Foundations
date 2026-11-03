@@ -1,4 +1,4 @@
-//=== Types ===//
+//*=== Types ===*//
 let myName = 'Mahadi';
 let myAge = 34;
 let perfect = true;
@@ -7,12 +7,12 @@ const addFunc = (a, b) => {
     return a + b;
 };
 console.log(addFunc(2, 4));
-//=== Array ===//
+//*=== Array ===*//
 const arr = [34, 43, 34];
 const studentNames = ['Mahadi', 'Milon', 'Hasan'];
 const rolls = [3, 34, 5, 3];
 // studentNames.push('Maha', 43); // Argument of type 'number' is not assignable to parameter of type 'string'.
-//=== Tuple ===//
+//*=== Tuple ===*//
 let data = ['Maha', 30];
 // Regular tuple: TS allows push() method, modifying the tuple length
 data.push(34);
@@ -20,7 +20,7 @@ let data2 = ['Maha', 30];
 // Error: 'push' does not exist because 'readonly' makes the tuple completely immutable
 // data2.push(34);
 console.log(data); // Output: ['Maha', 30, 34]
-//=== Optional Parameters ===//
+//*=== Optional Parameters ===*//
 const concatName = (firstName, lastName) => {
     if (!lastName) {
         return firstName;
@@ -28,7 +28,7 @@ const concatName = (firstName, lastName) => {
     return firstName + ' ' + lastName;
 };
 console.log(concatName('Maha'));
-//=== void & default parameters ===//
+//*=== void & default parameters ===*//
 // 1. Bad Practice: Default param should not be first
 const myFunc = (greeting = 'Hello', name) => {
     console.log(greeting + ' ' + name);
@@ -46,7 +46,7 @@ const myFunc3 = (name, greeting = 'Hello') => {
     console.log(greeting + ' ' + name);
 };
 myFunc3('maha'); // Works! Output: Hello maha
-//=== Rest parameters ===//
+//*=== Rest parameters ===*//
 const totalOfSum = (...numbers) => {
     return numbers.reduce((total, sum) => total + sum, 1);
 };
