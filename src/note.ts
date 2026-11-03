@@ -122,3 +122,21 @@ const user3: IUser = {
   action: () => console.log('Alhamdulillah'),
   address: ['Dhaka', 'Bangladesh'],
 };
+
+//=== Type alias ===//
+
+type Status = 'pending' | 'About';
+type Identity = string | number;
+type Role = 'User' | 'Admin';
+
+const typeStatus: Status = 'About';
+const studentIdentity: Identity = 'Maha';
+const userRole: Role = 'Admin';
+console.log(typeStatus, studentIdentity, userRole);
+
+type Admin = { id: number; role: 'admin'; privileges: string[] };
+type Member = { id: number; role: 'member'; plams: string[] };
+
+type Users = Admin | Member;
+const users: Users = { id: 34, role: 'admin', privileges: ['34', '34'] };
+console.log(users);

@@ -77,4 +77,10 @@ const user3 = {
     action: () => console.log('Alhamdulillah'),
     address: ['Dhaka', 'Bangladesh'],
 };
+const typeStatus = 'About';
+const studentIdentity = 'Maha';
+const userRole = 'Admin';
+console.log(typeStatus, studentIdentity, userRole);
+const users = { id: 34, role: 'admin', privileges: ['34', '34'] };
+console.log(users);
 export {};
