@@ -30,3 +30,35 @@ let data2: readonly [string, number] = ['Maha', 30];
 // data2.push(34);
 
 console.log(data); // Output: ['Maha', 30, 34]
+
+//=== Optional Parameters ===//
+const concatName = (firstName: string, lastName?: string): string => {
+  if (!lastName) {
+    return firstName;
+  }
+  return firstName + ' ' + lastName;
+};
+
+console.log(concatName('Maha'));
+
+//=== void & default parameters ===//
+
+// 1. Bad Practice: Default param should not be first
+const myFunc = (greeting: string = 'Hello', name?: string): void => {
+  console.log(greeting + ' ' + name);
+};
+myFunc('Hello', 'maha'); // Works only because we passed both values
+
+// 2. Error: 'maha' goes to greeting, so name is missing!
+// 'void' = this function returns nothing (no 'return' keyword)
+const myFunc2 = (greeting: string = 'Hello', name: string): void => {
+  console.log(greeting + ' ' + name);
+};
+// myFunc2('maha'); // TS Error: Expected 2 arguments, but got 1.
+
+// 3. Best Practice: Put required param first, default last
+// 'void' = runs the code, returns no value
+const myFunc3 = (name: string, greeting: string = 'Hello'): void => {
+  console.log(greeting + ' ' + name);
+};
+myFunc3('maha'); // Works! Output: Hello maha
