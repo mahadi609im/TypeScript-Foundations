@@ -1,1 +1,1 @@
-console.log('Hello Developer');
+import './practice.config.js';

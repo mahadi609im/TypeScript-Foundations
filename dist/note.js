@@ -1,4 +1,3 @@
-"use strict";
 //=== Types ===//
 let myName = 'Mahadi';
 let myAge = 34;
@@ -78,3 +77,4 @@ const user3 = {
     action: () => console.log('Alhamdulillah'),
     address: ['Dhaka', 'Bangladesh'],
 };
+export {};
