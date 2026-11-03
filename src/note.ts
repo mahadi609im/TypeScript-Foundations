@@ -81,3 +81,44 @@ const loginUser = (
 };
 
 loginUser('Maha', 34, true);
+
+//=== Type & interface ===//
+type User = {
+  name: string;
+  age: number;
+  salary: number;
+  action: () => void;
+  address: string[];
+};
+
+interface IUser {
+  name: string;
+  age: number;
+  salary: number;
+  action: () => void;
+  address: string[];
+}
+
+const user: User = {
+  name: 'Maha',
+  age: 20,
+  salary: 3434343434,
+  action: () => console.log('Alhamdulillah'),
+  address: ['Dhaka', 'Bangladesh'],
+};
+
+const user2: User = {
+  name: 'yahhu',
+  age: 15,
+  salary: 34343434343,
+  action: () => console.log('Alhamdulillah'),
+  address: ['Dhaka', 'Bangladesh'],
+};
+
+const user3: IUser = {
+  name: 'Babuni',
+  age: 15,
+  salary: 34343434343,
+  action: () => console.log('Alhamdulillah'),
+  address: ['Dhaka', 'Bangladesh'],
+};
