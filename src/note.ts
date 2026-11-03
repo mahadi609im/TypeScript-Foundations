@@ -62,3 +62,22 @@ const myFunc3 = (name: string, greeting: string = 'Hello'): void => {
   console.log(greeting + ' ' + name);
 };
 myFunc3('maha'); // Works! Output: Hello maha
+
+//=== Rest parameters ===//
+
+const totalOfSum = (...numbers: number[]) => {
+  return numbers.reduce((total, sum) => total + sum, 1);
+};
+
+console.log(totalOfSum(2, 5));
+
+const loginUser = (
+  ...args: [name: string, age: number, isActive: boolean]
+): void => {
+  const [name, age, isActive] = args;
+  console.log(
+    `My Name is ${name}, I am ${age} years old and i'm now ${isActive ? 'active' : 'deActive'}`,
+  );
+};
+
+loginUser('Maha', 34, true);
