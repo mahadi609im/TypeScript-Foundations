@@ -83,4 +83,24 @@ const userRole = 'Admin';
 console.log(typeStatus, studentIdentity, userRole);
 const users = { id: 34, role: 'admin', privileges: ['34', '34'] };
 console.log(users);
+const userStatus = 'pending';
+const userStatus2 = 'Hello world';
+const userStatus3 = 'approved';
+const showStatus = (status) => {
+    console.log('Your current application is', status);
+};
+showStatus(userStatus); //!as Status ব্যবহার করে আপনি টাইপস্ক্রিপ্টের টাইপ চ্যাকিং বা সিকিউরিটি মেকানিজমকে বাইপাস বা এড়িয়ে যাচ্ছেন।
+showStatus(userStatus2); //! টাইপস্ক্রিপ্ট কোনো এরর দেবে না, কিন্তু রানটাইমে ভুল ডাটা পাস হবে!
+showStatus(userStatus3);
+const config = {
+    port: 5000,
+};
+const currentPort = config.port;
+const currentPort2 = config.port;
+//*=== Const Assertion ===*//
+const configaration = {
+    port: 3434,
+    prefix: '/api/v1',
+};
 export {};
+// configaration.port = 34; //! Cannot assign to 'port' bcz it's a read-only proparty

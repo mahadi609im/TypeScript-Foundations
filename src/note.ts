@@ -140,3 +140,43 @@ type Member = { id: number; role: 'member'; plams: string[] };
 type Users = Admin | Member;
 const users: Users = { id: 34, role: 'admin', privileges: ['34', '34'] };
 console.log(users);
+
+//=== Type Assertion ===// -> //! Don't use 'as' anytime
+
+type Status2 = 'pending' | 'approved' | 'rejected';
+
+const userStatus: string = 'pending';
+const userStatus2: string = 'Hello world';
+const userStatus3: Status2 = 'approved';
+
+const showStatus = (status: Status2) => {
+  console.log('Your current application is', status);
+};
+
+showStatus(userStatus as Status2); //!as Status ব্যবহার করে আপনি টাইপস্ক্রিপ্টের টাইপ চ্যাকিং বা সিকিউরিটি মেকানিজমকে বাইপাস বা এড়িয়ে যাচ্ছেন।
+
+showStatus(userStatus2 as Status2); //! টাইপস্ক্রিপ্ট কোনো এরর দেবে না, কিন্তু রানটাইমে ভুল ডাটা পাস হবে!
+
+showStatus(userStatus3);
+
+//*=== Non-null Assertion ===*//
+
+interface IConfig {
+  port?: number;
+}
+
+const config: IConfig = {
+  port: 5000,
+};
+
+const currentPort: number = config.port!;
+const currentPort2: number = config.port as number;
+
+//*=== Const Assertion ===*//
+
+const configaration = {
+  port: 3434,
+  prefix: '/api/v1',
+} as const;
+
+// configaration.port = 34; //! Cannot assign to 'port' bcz it's a read-only proparty
