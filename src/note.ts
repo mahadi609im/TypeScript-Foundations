@@ -35,6 +35,18 @@ const rolls: number[] = [3, 34, 5, 3];
 
 // studentNames.push('Maha', 43); // Argument of type 'number' is not assignable to parameter of type 'string'.
 
+type Menu = 'Burger' | 'Pizza' | 'Chicken Fry';
+
+type Order = {
+  name: string;
+  items: Menu[];
+};
+
+const orderNow: Order = {
+  name: 'Maha',
+  items: ['Burger', 'Chicken Fry'],
+};
+
 //*=== Tuple ===*//
 let data: [string, number] = ['Maha', 30];
 
@@ -57,6 +69,14 @@ const concatName = (firstName: string, lastName?: string): string => {
 };
 
 console.log(concatName('Maha'));
+
+const moodRightNow = (name: string, mood?: string, emoji: string = '😉') => {
+  console.log(`${mood ?? 'Okay'} ${name} ${emoji}`);
+};
+
+moodRightNow('Maha', 'Right now', '✔️');
+moodRightNow('Maha');
+moodRightNow('Maha', undefined, '🫰');
 
 //*=== void & default parameters ===*//
 
@@ -197,3 +217,87 @@ const configaration = {
 } as const;
 
 // configaration.port = 34; //! Cannot assign to 'port' bcz it's a read-only proparty
+
+//*=== enum ===*//
+enum OrderStatus {
+  Pending = 'PENDING',
+  Shipped = 'SHIPPED',
+  Delivered = 'DELIVERED',
+}
+
+const showStatus3 = (status: OrderStatus) => {
+  console.log(`Your order is ${status}`);
+};
+
+showStatus3(OrderStatus.Shipped); // works
+// showStatus('SHIPPD');           // error: typo caught
+
+//*=== Keyof Typeof ===*//
+
+const fare = {
+  rickshaw: 34,
+  cng: 400,
+  bus: 25,
+  localBus: 15,
+  leguna: 20,
+  tempo: 30,
+  uber: 250,
+  pathao: 180,
+  train: 120,
+  launch: 350,
+  bike: 90,
+  taxi: 500,
+};
+
+type Vehicle = keyof typeof fare;
+
+const getFare = (v: Vehicle) => {
+  return fare[v];
+};
+
+console.log(getFare('bike'));
+
+//*=== Genaric ===*//
+
+//Example 1
+const showData = <T>(value: T[]): T[] => value;
+
+console.log(showData([3, 3]));
+console.log(showData(['3', '3']));
+
+const getFirst = <T>(value: T[]): T => {
+  return value[0];
+};
+
+console.log(getFirst([2, 4, 6, 8, 10]));
+console.log(getFirst(['Maha', 'Haha']));
+
+//Example 2
+const firstSecond = <A, B>(first: A, second: B): [A, B] => {
+  return [first, second];
+};
+
+console.log(firstSecond('Maha', 30));
+console.log(firstSecond('yes', true));
+
+//Example 3
+type Box<T> = { content: T };
+
+const box1: Box<number> = { content: 34 };
+const box2: Box<string> = { content: 'Maha' };
+
+// Example 4
+type ApiResponse<T> = {
+  success: boolean;
+  data: T;
+};
+
+const vehicle: ApiResponse<string[]> = {
+  success: true,
+  data: ['Maha', 'age'],
+};
+
+const price: ApiResponse<number> = {
+  success: true,
+  data: 343,
+};
