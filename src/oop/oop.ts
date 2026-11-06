@@ -76,3 +76,38 @@ const s2 = new Student('haha', 30);
 
 s1.rollNumber = 43030;
 console.log(s1.rollNumber);
+
+//*=== Inheritance ===*//
+
+class Employee1 {
+  constructor(
+    private id: number,
+    public name: string,
+    public salary: number,
+    protected skills: string,
+  ) {}
+
+  describe(): string {
+    return `${this.name} has ${this.salary} and his skills set ${this.skills}`;
+  }
+}
+
+class Manager extends Employee1 {
+  constructor(
+    id: number,
+    name: string,
+    salary: number,
+    skills: string,
+    public teamMember: number,
+  ) {
+    super(id, name, salary, skills);
+  }
+
+  describeManager(): string {
+    // return `${this.id} - ${super.describe()} and manages ${this.teamMember} team members`; //! private naa die protected dile parent class er sathe connected class der k access korte dibe... jodi private baire access korte e hoy, tahole get method er maddhome o kora jay
+    return `${this.name} has ${this.salary} and his skills set ${this.skills} and manages ${this.teamMember} team members`;
+  }
+}
+
+const m1 = new Manager(3, 'Maha', 24043, 'js', 234);
+console.log(m1.describeManager());
