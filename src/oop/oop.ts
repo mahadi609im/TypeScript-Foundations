@@ -168,3 +168,50 @@ const dev1 = new Developer('Mahadi', 100, 'Programmer');
 console.log(emp12.calculatePay(0.1));
 console.log(man12.calculatePay());
 console.log(dev1.calculatePay(0.1));
+
+//*=== Abstraction ===*//
+
+abstract class Employee5 {
+  constructor(
+    public name: string,
+    protected salary: number,
+  ) {}
+
+  get empSalary() {
+    return this.salary;
+  }
+
+  set empSalary(newSalary: number) {
+    if (newSalary < 0) {
+      throw new Error('please gives positive value');
+    }
+
+    this.salary = newSalary;
+  }
+  //**
+  // Abstract method: শুধু signature থাকবে, কোনো logic থাকবে না।
+  // প্রতিটি child class-এ এগুলোর logic implement করা বাধ্যতামূলক।
+  //  */
+  abstract getSalam(): string;
+  abstract salaryPay(): number;
+}
+
+class Manager5 extends Employee5 {
+  salaryPay() {
+    return this.empSalary + 5000;
+  }
+
+  getSalam() {
+    return 'Assalamu-alaikum';
+  }
+}
+
+class Developer5 extends Employee5 {
+  salaryPay(): number {
+    return this.empSalary + 2000;
+  }
+
+  getSalam() {
+    return 'Assalamu-alaikum';
+  }
+}
