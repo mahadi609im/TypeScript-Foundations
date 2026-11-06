@@ -111,3 +111,60 @@ class Manager extends Employee1 {
 
 const m1 = new Manager(3, 'Maha', 24043, 'js', 234);
 console.log(m1.describeManager());
+
+//*=== Polimorphism ===*//
+
+class Employee2 {
+  constructor(
+    public name: string,
+    protected salary: number,
+  ) {}
+
+  get employeeSalary(): number {
+    return this.salary;
+  }
+
+  set employeeSalary(newSalary: number) {
+    if (newSalary < 0) {
+      throw new Error('salary must be 0 or more');
+    }
+
+    this.salary = newSalary;
+  }
+
+  calculatePay(taxRate: number) {
+    return this.salary - this.salary * taxRate;
+  }
+}
+
+class Marketer extends Employee2 {}
+class Manager2 extends Employee2 {
+  //override chaile likhte pari naao pari
+  override calculatePay() {
+    return this.salary + 500;
+  }
+}
+//* calculatePay() function a jodi parameter nite chai must parent theke nite hobe, shudu child a nile hobe naa
+
+class Developer extends Employee2 {
+  constructor(
+    name: string,
+    salary: number,
+    public type: string,
+  ) {
+    super(name, salary);
+  }
+
+  override calculatePay(taxRate: number) {
+    return this.salary - this.salary * taxRate;
+  }
+}
+
+const emp12 = new Employee2('Maha', 300);
+const mark1 = new Marketer('Haha', 30);
+const man12 = new Manager2('Mahadi', 5000);
+const dev1 = new Developer('Mahadi', 100, 'Programmer');
+
+console.log(emp12.calculatePay(0.1));
+console.log(man12.calculatePay());
+console.log(dev1.calculatePay(0.1));
