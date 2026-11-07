@@ -7,11 +7,21 @@ const addFunc = (a, b) => {
     return a + b;
 };
 console.log(addFunc(2, 4));
+const student1 = {
+    id: 343,
+    roll: 34,
+    name: 'Mahadi',
+    isActive: true,
+};
+// student1.name = "Maha" //! cannot change bcz readonly
 //*=== Array ===*//
 const arr = [34, 43, 34];
 const studentNames = ['Mahadi', 'Milon', 'Hasan'];
 const rolls = [3, 34, 5, 3];
-// studentNames.push('Maha', 43); // Argument of type 'number' is not assignable to parameter of type 'string'.
+const orderNow = {
+    name: 'Maha',
+    items: ['Burger', 'Chicken Fry'],
+};
 //*=== Tuple ===*//
 let data = ['Maha', 30];
 // Regular tuple: TS allows push() method, modifying the tuple length
@@ -28,6 +38,12 @@ const concatName = (firstName, lastName) => {
     return firstName + ' ' + lastName;
 };
 console.log(concatName('Maha'));
+const moodRightNow = (name, mood, emoji = '😉') => {
+    console.log(`${mood ?? 'Okay'} ${name} ${emoji}`);
+};
+moodRightNow('Maha', 'Right now', '✔️');
+moodRightNow('Maha');
+moodRightNow('Maha', undefined, '🫰');
 //*=== void & default parameters ===*//
 // 1. Bad Practice: Default param should not be first
 const myFunc = (greeting = 'Hello', name) => {
@@ -102,5 +118,36 @@ const configaration = {
     port: 3434,
     prefix: '/api/v1',
 };
-export {};
 // configaration.port = 34; //! Cannot assign to 'port' bcz it's a read-only proparty
+//*=== enum ===*//
+var OrderStatus;
+(function (OrderStatus) {
+    OrderStatus["Pending"] = "PENDING";
+    OrderStatus["Shipped"] = "SHIPPED";
+    OrderStatus["Delivered"] = "DELIVERED";
+})(OrderStatus || (OrderStatus = {}));
+const showStatus3 = (status) => {
+    console.log(`Your order is ${status}`);
+};
+showStatus3(OrderStatus.Shipped); // works
+// showStatus('SHIPPD');           // error: typo caught
+//*=== Keyof Typeof ===*//
+const fare = {
+    rickshaw: 34,
+    cng: 400,
+    bus: 25,
+    localBus: 15,
+    leguna: 20,
+    tempo: 30,
+    uber: 250,
+    pathao: 180,
+    train: 120,
+    launch: 350,
+    bike: 90,
+    taxi: 500,
+};
+const getFare = (v) => {
+    return fare[v];
+};
+console.log(getFare('bike'));
+export {};
